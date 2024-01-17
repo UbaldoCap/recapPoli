@@ -37,10 +37,10 @@ public class Riunione implements Evento{
         this.eventoEnum = eventoEnum;
     }
 
-    private StringBuilder allinea(String parte, String character) {
+    private StringBuilder allinea(String parte, CaratteriEnum character) {
         StringBuilder stringBuilder = new StringBuilder(" ");
         int nChar = 15 - parte.length();
-        stringBuilder.append(character.repeat(Math.max(0, nChar)));
+        stringBuilder.append(character.getCarattere().repeat(Math.max(0, nChar)));
         stringBuilder.append(" ");
         return stringBuilder;
     }
@@ -57,7 +57,7 @@ public class Riunione implements Evento{
 
     @Override
     public String dettagli() {
-        return eventoEnum.getColore() + eventoEnum.getDescrizione() + allinea(eventoEnum.getDescrizione(), "*")
-                + nome + allinea(nome, "-") + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy : HH.mm")) + "\u001B[0m";
+        return eventoEnum.getColore() + eventoEnum.getDescrizione() + allinea(eventoEnum.getDescrizione(), CaratteriEnum.ASTERISCO)
+                + nome + allinea(nome, CaratteriEnum.TRATTINO) + data.format(DateTimeFormatter.ofPattern("dd/MM/yyyy : HH.mm")) + "\u001B[0m";
     }
 }
